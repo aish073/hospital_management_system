@@ -17,7 +17,8 @@ public class Doctor {
 
     // EMPTY CONSTRUCTOR (REQUIRED FOR JPA)
     public Doctor() {
-
+        this.doctorId = "DOC-" +
+                UUID.randomUUID().toString().substring(0,8);
     }
 
     // PARAMETERIZED CONSTRUCTOR
@@ -46,9 +47,25 @@ public class Doctor {
         return specialization;
     }
 
+    public int getExperienceYears() {
+        return experienceYears;
+    }
+
+    // SETTERS
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+
+    public void setExperienceYears(int experienceYears) {
+        this.experienceYears = experienceYears;
+    }
+
     @Override
     public String toString() {
-
         return "\n===== DOCTOR DETAILS =====" +
                 "\nDoctor ID : " + doctorId +
                 "\nDoctor Name : " + doctorName +

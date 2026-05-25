@@ -2,6 +2,7 @@ package org.example.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -19,10 +20,19 @@ public class Patient {
     private LocalDate admissionDate;
     private boolean insuranceApproved;
 
+    // EMPTY CONSTRUCTOR
     public Patient() {
 
+        this.patientId =
+                "PAT-" +
+                        UUID.randomUUID()
+                                .toString()
+                                .substring(0,8);
+
+        this.admissionDate = LocalDate.now();
     }
 
+    // PARAMETERIZED CONSTRUCTOR
     public Patient(String fullName,
                    int age,
                    String bloodGroup,
@@ -45,6 +55,7 @@ public class Patient {
         this.insuranceApproved = insuranceApproved;
     }
 
+    // GETTERS
     public String getPatientId() {
         return patientId;
     }
@@ -53,8 +64,61 @@ public class Patient {
         return fullName;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
     public String getDiagnosis() {
         return diagnosis;
+    }
+
+    public String getEmergencyContact() {
+        return emergencyContact;
+    }
+
+    public LocalDate getAdmissionDate() {
+        return admissionDate;
+    }
+
+    public boolean isInsuranceApproved() {
+        return insuranceApproved;
+    }
+
+    // SETTERS
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    public void setEmergencyContact(String emergencyContact) {
+        this.emergencyContact = emergencyContact;
+    }
+
+    public void setAdmissionDate(LocalDate admissionDate) {
+        this.admissionDate = admissionDate;
+    }
+
+    public void setInsuranceApproved(boolean insuranceApproved) {
+        this.insuranceApproved = insuranceApproved;
     }
 
     @Override
@@ -69,8 +133,6 @@ public class Patient {
                 "\nEmergency Contact : " + emergencyContact +
                 "\nAdmission Date : " + admissionDate +
                 "\nInsurance : " +
-                (insuranceApproved
-                        ? "Approved"
-                        : "Pending");
+                (insuranceApproved ? "Approved" : "Pending");
     }
 }

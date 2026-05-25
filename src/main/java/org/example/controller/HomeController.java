@@ -10,4 +10,8 @@ public class HomeController {
     public String home() {
         return "Hospital Management System is Running!";
     }
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello from Hospital API!";
+    }
 }
